@@ -1,5 +1,6 @@
 import sys
 
+
 def main() -> None:
     args: list[str] = sys.argv[1:]
     inventory: dict[str, int] = {}
@@ -10,7 +11,6 @@ def main() -> None:
         if len(parts) != 2:
             print(f"Error invalid parameter '{arg}'")
             continue
-            
         item: str = parts[0]
         qty_str: str = parts[1]
 
@@ -22,7 +22,10 @@ def main() -> None:
             qty: int = int(qty_str)
             inventory[item] = qty
         except ValueError:
-            print(f"Quantity error for '{item}': invalid literal for int() with base 10: '{qty_str}'")
+            print(
+                f"Quantity error for '{item}':"
+                f" invalid literal for int() with base 10: '{qty_str}'"
+                )
 
     print(f"Got inventory: {inventory}")
     item_list: list[str] = list(inventory.keys())
@@ -34,22 +37,29 @@ def main() -> None:
     if total_qty > 0:
         most_abundant: str = item_list[0]
         least_abundant: str = item_list[0]
-        
+
         for item in item_list:
             qty = inventory[item]
             pct: float = round((qty / total_qty) * 100, 1)
             print(f"Item {item} represents {pct}%")
-            
+
             if inventory[item] > inventory[most_abundant]:
                 most_abundant = item
             if inventory[item] < inventory[least_abundant]:
                 least_abundant = item
 
-        print(f"Item most abundant: {most_abundant} with quantity {inventory[most_abundant]}")
-        print(f"Item least abundant: {least_abundant} with quantity {inventory[least_abundant]}")
+        print(
+            f"Item most abundant: "
+            f"{most_abundant} with quantity {inventory[most_abundant]}"
+            )
+        print(
+            f"Item least abundant: "
+            f"{least_abundant} with quantity {inventory[least_abundant]}"
+            )
 
     inventory.update({"magic_item": 1})
     print(f"Updated inventory: {inventory}")
+
 
 if __name__ == "__main__":
     main()
