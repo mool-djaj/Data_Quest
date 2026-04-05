@@ -13,7 +13,7 @@ def main():
 			print(f"Invalid parameter: {scor}")
 
 	if len(sys.argv) < 2:
-		print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2>")
+		print("No scores provided. Usage: python3 ft_score_analytics.py <score1> <score2> ...")
 		return
 
 	if not scores:
